@@ -1,6 +1,7 @@
 {
-  "name": "@zerodev/wagmi",
-  "version": "4.1.19",
+  "name": "@jbloxsome/zerodev-wagmi",
+  "repository": "https://github.com/jbloxsome/zerodev-wagmi",
+  "version": "4.2.0",
   "files": [
     "dist",
     "rainbowkit",
