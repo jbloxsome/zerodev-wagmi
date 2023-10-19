@@ -5,7 +5,7 @@ import type { Chain } from 'wagmi/chains';
 import { normalizeChainId } from "../utilities/normalizeChainId.js";
 import { ProjectConfiguration } from "../types/index.js";
 import { getProjectsConfiguration } from "../utilities/getProjectsConfiguration.js";
-import { createWalletClient, custom } from "viem";
+import { type Address, createWalletClient, custom } from "viem";
 import { SmartAccountSigner } from "@alchemy/aa-core";
 
 export type AccountParams = {
@@ -20,7 +20,8 @@ export type AccountParams = {
     gasToken?: SupportedGasToken,
     paymasterProvider?: PaymasterAndBundlerProviders,
     bundlerProvider?: PaymasterAndBundlerProviders,
-    onlySendSponsoredTransaction?: boolean
+    onlySendSponsoredTransaction?: boolean,
+    factoryAddress?: Address,
 }
 
 export class ZeroDevConnector<Options = AccountParams> extends Connector<ECDSAProvider, Options> {
@@ -106,7 +107,8 @@ export class ZeroDevConnector<Options = AccountParams> extends Connector<ECDSAPr
                         rpcUrl: options.rpcUrl
                     },
                     accountConfig: {
-                        index: options.index
+                        index: options.index,
+                        factoryAddress: options.factoryAddress,
                     },
                     paymasterConfig: {
                         paymasterProvider: options.paymasterProvider,
